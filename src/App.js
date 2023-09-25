@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <TopBar />
         <Routes>
-          <Route path={"/"} element={<ProfilePage />} />
+          <Route path={"/:id?"} element={<ProfilePage />} />
         </Routes>
 
         <Footer />
