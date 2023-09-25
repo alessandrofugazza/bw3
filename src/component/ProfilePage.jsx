@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Main from "./Main";
 import SideBar from "./SideBar";
+import TopBar from "./TopBar";
 
 const ProfilePage = () => {
   return (
