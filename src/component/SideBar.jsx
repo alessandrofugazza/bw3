@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Pencil, PersonFillAdd } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const [sidebarFetchStudent, setSidebarFetchStudent] = useState(null);
@@ -64,9 +65,11 @@ const SideBar = () => {
               if (i < 6) {
                 return (
                   <Row className="border-bottom" key={el._id}>
-                    <Col xs={3}>
-                      <img width={"50rem"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
-                    </Col>
+                    <Link to={"/" + el._id}>
+                      <Col xs={3}>
+                        <img width={"50rem"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
+                      </Col>
+                    </Link>
                     <Col xs={9} className="d-flex flex-column align-items-start">
                       <h5>
                         {el.name} {el.surname}
