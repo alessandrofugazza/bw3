@@ -4,14 +4,16 @@ import ProfilePage from "./component/ProfilePage";
 import TopBar from "./component/TopBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./component/Footer";
+import BioProfile from "./component/BioProfile";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <BioProfile />
         <TopBar />
         <Routes>
-          <Route to={"/:id"} element={<ProfilePage />} />
+          <Route to="/" element={<ProfilePage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

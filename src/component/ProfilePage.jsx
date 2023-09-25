@@ -1,4 +1,6 @@
+import Main from "./Main";
+
 const ProfilePage = () => {
-  return;
+  return <Main />;
 };
 export default ProfilePage;
