@@ -59,7 +59,7 @@ const BioProfile = () => {
   };
   return (
     <>
-      <Container>
+      <Container className="p-4">
         <Card style={{ width: "100%" }}>
           <Card.Img
             style={{ height: "200px" }}

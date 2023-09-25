@@ -1,4 +1,6 @@
+import BioProfile from "./BioProfile";
+
 const Main = () => {
-  return;
+  return <BioProfile />;
 };
 export default Main;

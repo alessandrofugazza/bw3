@@ -10,11 +10,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <BioProfile />
         <TopBar />
-
         <Routes>
-          <Route to="/" element={<ProfilePage />} />
+          <Route path={"/"} element={<ProfilePage />} />
         </Routes>
 
         <Footer />
