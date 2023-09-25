@@ -12,9 +12,11 @@ function App() {
       <BrowserRouter>
         <BioProfile />
         <TopBar />
+
         <Routes>
           <Route to="/" element={<ProfilePage />} />
         </Routes>
+
         <Footer />
       </BrowserRouter>
     </div>
