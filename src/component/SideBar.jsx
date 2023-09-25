@@ -29,9 +29,9 @@ const SideBar = () => {
   return (
     <Container className="p-4">
       <Row>
-        <Col xs={12} className="mb-2 rounded">
+        <Col xs={12} className="mb-2 rounded border">
           <Row className="align-items-start border-bottom">
-            <Col xs={9} className="d-flex flex-column align-items-start ">
+            <Col xs={9} className="d-flex flex-column text-start">
               <h5>Lingua del profilo</h5>
               <p className="text-muted">italiano</p>
             </Col>
@@ -40,7 +40,7 @@ const SideBar = () => {
             </Col>
           </Row>
           <Row>
-            <Col xs={9} className="d-flex flex-column align-items-start">
+            <Col xs={9} className="d-flex flex-column text-start">
               <h5>Public profile & URL</h5>
               <p className="text-muted text-start">www.linkedin.com/in/my-profile-name-id</p>
             </Col>
@@ -49,32 +49,35 @@ const SideBar = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} className="mb-2">
+        <Col xs={12} className="mb-2 border rounded p-0">
           <img
-            className="rounded img-fluid"
+            className="rounded img-fluid "
             src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
             alt="adv"
           />
         </Col>
-        <Col xs={12} className="mb-2 d-flex flex-column align-items-start rounded">
-          <h5>Persone che potresti conoscere</h5>
-          <p className="text-muted">Dalla tua scuola/lavoro</p>
+        <Col xs={12} className="mb-2 d-flex flex-column align-items-start rounded border">
+          <div className="border-bottom text-start">
+            <h5>Persone che potresti conoscere</h5>
+            <p className="text-muted">Dalla tua scuola/lavoro</p>
+          </div>
 
           {sidebarFetchStudent &&
             sidebarFetchStudent.map((el, i) => {
-              if (i < 6) {
+              if (i < 10) {
                 return (
                   <Row className="border-bottom" key={el._id}>
-                    <Link to={"/" + el._id}>
-                      <Col xs={3}>
-                        <img width={"50rem"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
-                      </Col>
-                    </Link>
-                    <Col xs={9} className="d-flex flex-column align-items-start">
+                    <Col xs={3} className="p-1">
+                      <Link to={"/" + el._id}>
+                        <img width={"45px"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
+                      </Link>
+                    </Col>
+
+                    <Col xs={9} className="p-0 d-flex flex-column align-items-start text-start">
                       <h5>
                         {el.name} {el.surname}
                       </h5>
-                      <p>{el.title}</p>
+                      <p className="text-truncate text-wrap">{el.title}</p>
                       <Button className=" rounded-pill" variant="outline-secondary">
                         <PersonFillAdd /> Collegati
                       </Button>
@@ -84,8 +87,8 @@ const SideBar = () => {
               }
             })}
         </Col>
-        <Col xs={12} className="mb-2 rounded">
-          <div className="d-flex justify-content-start align-items-center">
+        <Col xs={12} className="mb-2 rounded border">
+          <div className="d-flex justify-content-start align-items-center ">
             <img
               width={"25rem"}
               className="pe-2"
@@ -94,47 +97,47 @@ const SideBar = () => {
             />
             <h6 className="m-0">LEARNING</h6>
           </div>
-          <div className="text-start">
+          <div className="text-start border-bottom">
             <p>Aggiungi nuove competenze con questi corsi, gratuiti per 24 ore</p>
           </div>
-          <Row className="mb-2">
-            <Col xs={3}>
+          <Row className="mb-2 border-bottom">
+            <Col xs={4} className="p-0 d-flex flex-column justify-content-center">
               <img
                 className="img-fluid"
                 src="https://media.licdn.com/dms/image/C4E0DAQF9Ffx0ZFkVew/learning-public-crop_60_100/0/1584382504447?e=1696240800&v=beta&t=TQh1GvobwvOoEVNo9whTnYz2vmWkWvxZwrfEROyCQhc"
                 alt="video"
               />
             </Col>
-            <Col xs={9} className="d-flex justify-content-start ">
-              <p className="fw-bold">Gestione dei progetti semplificata</p>
+            <Col xs={8} className="d-flex justify-content-start ">
+              <p className="fw-bold text-truncate">Gestione dei progetti semplificata</p>
             </Col>
           </Row>
-          <Row className="mb-2">
-            <Col xs={3}>
+          <Row className="mb-2 border-bottom">
+            <Col xs={4} className="p-0 d-flex flex-column justify-content-center">
               <img
                 className="img-fluid"
                 src="https://media.licdn.com/dms/image/C4E0DAQF9Ffx0ZFkVew/learning-public-crop_60_100/0/1584382504447?e=1696240800&v=beta&t=TQh1GvobwvOoEVNo9whTnYz2vmWkWvxZwrfEROyCQhc"
                 alt="video"
               />
             </Col>
-            <Col xs={9} className="d-flex justify-content-start ">
-              <p className="fw-bold">Gestione dei progetti semplificata</p>
+            <Col xs={8} className="d-flex justify-content-start ">
+              <p className="fw-bold text-truncate">Gestione dei progetti semplificata</p>
             </Col>
           </Row>
-          <Row className="mb-2">
-            <Col xs={3}>
+          <Row className="mb-2 border-bottom">
+            <Col xs={4} className="p-0 d-flex flex-column justify-content-center">
               <img
                 className="img-fluid"
                 src="https://media.licdn.com/dms/image/C4E0DAQF9Ffx0ZFkVew/learning-public-crop_60_100/0/1584382504447?e=1696240800&v=beta&t=TQh1GvobwvOoEVNo9whTnYz2vmWkWvxZwrfEROyCQhc"
                 alt="video"
               />
             </Col>
-            <Col xs={9} className="d-flex justify-content-start ">
-              <p className="fw-bold">Gestione dei progetti semplificata</p>
+            <Col xs={8} className="d-flex justify-content-start ">
+              <p className="fw-bold text-truncate">Gestione dei progetti semplificata</p>
             </Col>
           </Row>
         </Col>
-        <Col xs={12} className="mb-2">
+        <Col xs={12} className="mb-2 border rounded p-0">
           <img
             className="rounded img-fluid"
             src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
