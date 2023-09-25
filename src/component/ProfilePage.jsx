@@ -1,4 +1,6 @@
+import SideBar from "./SideBar";
+
 const ProfilePage = () => {
-  return;
+  return <SideBar />;
 };
 export default ProfilePage;
