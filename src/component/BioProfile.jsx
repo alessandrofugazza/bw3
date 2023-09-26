@@ -18,11 +18,10 @@ const BioProfile = () => {
 
   const fetchMeProfile = async () => {
     try {
-      const resp = await fetch("https://barbie-linkedin.cyclic.cloud/api/profile/me", {
+      const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
-          team: "team-3",
         },
       });
       const data = await resp.json();
@@ -34,12 +33,10 @@ const BioProfile = () => {
   };
   const fetchIdProfile = async () => {
     try {
-      const resp = await fetch("https://barbie-linkedin.cyclic.cloud/api/profile/" + params.id, {
+      const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/" + params.id, {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
-
-          team: "team-3",
         },
       });
       const data = await resp.json();
@@ -69,13 +66,12 @@ const BioProfile = () => {
 
   const fetchModal = async () => {
     try {
-      const resp = await fetch("https://barbie-linkedin.cyclic.cloud/api/profile/", {
+      const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
         method: "PUT",
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
           "Content-type": "application/json",
-          team: "team-3",
         },
         body: JSON.stringify(info),
       });
