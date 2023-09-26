@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Form, InputGroup, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { setProfile } from "../redux/action";
 import { async } from "q";
 
