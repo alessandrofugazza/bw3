@@ -8,10 +8,11 @@ const SideBar = () => {
 
   const fetchData = async () => {
     try {
-      const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/", {
+      const resp = await fetch("https://barbie-linkedin.cyclic.cloud/api/profile/", {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+          team: "team-3",
         },
       });
       if (resp.ok) {
