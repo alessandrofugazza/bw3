@@ -10,11 +10,15 @@ const BioProfile = () => {
   const profile = useSelector((state) => state.profile.content);
   const [info, setInfo] = useState(null);
   const [show, setShow] = useState(false);
+  const [showModalProfilePicture, setShowModalProfilePicture] = useState(false);
+  const [imgToFetch, setImgToFetch] = useState("ciao");
   const params = useParams();
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleShowProfilePicture = () => setShowModalProfilePicture(true);
+  const handleCloseProfilePicture = () => setShowModalProfilePicture(false);
 
   const fetchMeProfile = async () => {
     try {
@@ -45,6 +49,46 @@ const BioProfile = () => {
       console.log(error);
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(e.target[0].files[0]);
+    const formData = new FormData();
+    formData.append("profile", e.target[0].files[0]);
+
+    try {
+      const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/" + profile._id + "/picture", {
+        method: "POST",
+        body: formData,
+
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+        },
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const fetchPostProfile = async () => {
+  //   try {
+  //     const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/" + profile._id + "/picture", {
+  //       method: "POST",
+  //       body: JSON.stringify({ profile: imgToFetch.target.value }),
+  //       headers: {
+  //         Authorization:
+  //           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+  //       },
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   useEffect(() => {
     params.id ? fetchIdProfile(params.id) : fetchMeProfile();
   }, [params.id]);
@@ -103,6 +147,7 @@ const BioProfile = () => {
               }}
             >
               <img
+                onClick={() => handleShowProfilePicture()}
                 style={{
                   width: "92px",
                 }}
@@ -132,6 +177,30 @@ const BioProfile = () => {
           </Card.Body>
         </Card>
       </Container>
+      <Modal show={showModalProfilePicture} onHide={handleCloseProfilePicture}>
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={handleSubmit}>
+          <Modal.Body>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Carica un'immagine di profilo</Form.Label>
+              <Form.Control type="file" onChange={(e) => setImgToFetch(e)} />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              type="submit"
+              variant="outline-primary"
+              onClick={() => {
+                handleCloseProfilePicture();
+              }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
       {/* {info &&
         !params.id(
           <Modal show={show} onHide={handleClose}>

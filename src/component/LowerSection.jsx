@@ -1,8 +1,13 @@
-import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Badge, Button, Card, Col, Container, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
 import { ArrowRight, BroadcastPin, EyeFill, PeopleFill, Plus } from "react-bootstrap-icons";
 import { BiPencil } from "react-icons/bi";
 
 const LowerSection = () => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
   return (
     <Container className="p-4">
       <Card className="mb-2">
@@ -140,6 +145,34 @@ const LowerSection = () => {
       <Card className="mb-2">
         <Card.Body>
           <div className="d-flex justify-content-between align-items-center mb-4">
+            <div className="d-flex flex-column">
+              <Card.Title>Attività</Card.Title>
+              <p className="text-primary fw-bold m-0">0 Follower</p>
+            </div>
+            <div>
+              <Button variant="outline-primary" className="rounded-pill" onClick={handleShow}>
+                Aggiungi un post
+              </Button>
+
+              <BiPencil className="fs-3 text-secondary" />
+            </div>
+          </div>
+          <Row>
+            <Col xs={12}>
+              <h6>Non ci sono ancora post</h6>
+              <p>I post che creerai verranno visualizzati qui.</p>
+            </Col>
+            <Col xs={12}>
+              <Button className="w-100" variant="outline-secondary">
+                Mostra tutte le attività <ArrowRight />
+              </Button>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+      <Card className="mb-2">
+        <Card.Body>
+          <div className="d-flex justify-content-between align-items-center mb-4">
             <Card.Title>Formazione</Card.Title>
             <div>
               <Plus className="fs-3 text-secondary" />
@@ -212,6 +245,25 @@ const LowerSection = () => {
           </Row>
         </Card.Body>
       </Card>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <FloatingLabel controlId="floatingTextarea2" label="Di cosa vorresti parlare?">
+            <Form.Control as="textarea" placeholder="Di cosa vorresti parlare?" style={{ height: "100px" }} />
+          </FloatingLabel>
+          <Form.Group controlId="formFile" className="mb-3">
+            <Form.Label>Inserisci un'immagine per il post</Form.Label>
+            <Form.Control type="file" />
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="outline-primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
