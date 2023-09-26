@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Form, InputGroup, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { setProfile } from "../redux/action";
 import { async } from "q";
 
@@ -25,6 +25,7 @@ const BioProfile = () => {
         },
       });
       const data = await resp.json();
+      console.log(resp);
       dispatch(setProfile(data));
     } catch (error) {
       console.log(error);
@@ -75,11 +76,12 @@ const BioProfile = () => {
         body: JSON.stringify(info),
       });
       fetchMeProfile();
+      handleClose();
     } catch (error) {}
   };
   return (
     <>
-      <Container className="p-4">
+      <Container className="p-0">
         <Card style={{ width: "100%" }}>
           <Card.Img
             style={{ height: "200px" }}
@@ -132,86 +134,85 @@ const BioProfile = () => {
           </Card.Body>
         </Card>
       </Container>
-      {/* {info &&
-        !params.id(
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <Form.Group className="mb-3">
-                  <Form.Label column sm="2">
-                    Nome
-                  </Form.Label>
+      {info && !params.id && (
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <Form.Group className="mb-3">
+                <Form.Label column sm="2">
+                  Nome
+                </Form.Label>
 
-                  <Form.Control
-                    type="text"
-                    value={info.name}
-                    onChange={(e) => changeInfo(e.target.value, "name")}
-                    placeholder="inserisci Nome"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label column sm="2">
-                    Cognome
-                  </Form.Label>
+                <Form.Control
+                  type="text"
+                  value={info.name}
+                  onChange={(e) => changeInfo(e.target.value, "name")}
+                  placeholder="inserisci Nome"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label column sm="2">
+                  Cognome
+                </Form.Label>
 
-                  <Form.Control
-                    type="text"
-                    value={info.surname}
-                    onChange={(e) => changeInfo(e.target.value, "surname")}
-                    placeholder="inserisci Cognome"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label column sm="2">
-                    Luogo
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={info.area}
-                    onChange={(e) => changeInfo(e.target.value, "area")}
-                    placeholder="inserisci Città, Regione, Stato"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label column sm="2">
-                    Competenze
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    value={info.title}
-                    onChange={(e) => changeInfo(e.target.value, "title")}
-                    placeholder="inserisci un Ruolo"
-                  />
-                </Form.Group>
+                <Form.Control
+                  type="text"
+                  value={info.surname}
+                  onChange={(e) => changeInfo(e.target.value, "surname")}
+                  placeholder="inserisci Cognome"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label column sm="2">
+                  Luogo
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  value={info.area}
+                  onChange={(e) => changeInfo(e.target.value, "area")}
+                  placeholder="inserisci Città, Regione, Stato"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label column sm="2">
+                  Competenze
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  value={info.title}
+                  onChange={(e) => changeInfo(e.target.value, "title")}
+                  placeholder="inserisci un Ruolo"
+                />
+              </Form.Group>
 
-                <InputGroup>
-                  <InputGroup.Text>Bio:</InputGroup.Text>
-                  <Form.Control
-                    as="textarea"
-                    value={info.bio}
-                    onChange={(e) => changeInfo(e.target.value, "bio")}
-                    aria-label="scrivi una bio"
-                  />
-                </InputGroup>
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary" type="submit" onClick={() => fetchModal()}>
-                Save Changes
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        )} */}
+              <InputGroup>
+                <InputGroup.Text>Bio:</InputGroup.Text>
+                <Form.Control
+                  as="textarea"
+                  value={info.bio}
+                  onChange={(e) => changeInfo(e.target.value, "bio")}
+                  aria-label="scrivi una bio"
+                />
+              </InputGroup>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" type="submit" onClick={() => fetchModal()}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </>
   );
 };

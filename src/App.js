@@ -4,7 +4,7 @@ import ProfilePage from "./component/ProfilePage";
 import TopBar from "./component/TopBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./component/Footer";
-import BioProfile from "./component/BioProfile";
+import ExpPage from "./component/ExpPage";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <TopBar />
         <Routes>
           <Route path={"/:id?"} element={<ProfilePage />} />
+          <Route path={"/experience"} element={<ExpPage />} />
         </Routes>
 
         <Footer />

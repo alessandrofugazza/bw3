@@ -1,4 +1,4 @@
-import { SET_COMPANYS, SET_PROFILE } from "../action";
+import { SET_PROFILE } from "../action";
 
 const initialState = {
   content: [],
