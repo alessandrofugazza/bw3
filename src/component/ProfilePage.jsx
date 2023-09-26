@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Main from "./Main";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
+import LowerSection from "./LowerSection";
 
 const ProfilePage = () => {
   return (
@@ -13,6 +14,7 @@ const ProfilePage = () => {
               <Col xs={12} lg={8}>
                 {" "}
                 <Main />
+                <LowerSection />
               </Col>
               <Col xs={12} lg={4}>
                 <SideBar />
