@@ -78,7 +78,7 @@ const Experience = () => {
 
   return (
     <>
-      <Container className="px-4 border bg-white mt-3 ">
+      <Container className="px-4 border bg-white mt-3 rounded ">
         <Row className="  gx-5">
           <Col xs={12} className="d-flex justify-content-between align-items-center pt-3">
             <h6 className="fw-bold">Esperienze</h6>

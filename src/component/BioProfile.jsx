@@ -110,7 +110,7 @@ const BioProfile = () => {
   };
   return (
     <>
-      <Container className="p-0">
+      <Container className="p-0 pt-4">
         <Card style={{ width: "100%" }}>
           <Card.Img
             style={{ height: "200px" }}
@@ -243,30 +243,32 @@ const BioProfile = () => {
           </Modal.Footer>
         </Modal>
       )}
-      <Modal show={showModalProfilePicture} onHide={handleCloseProfilePicture}>
-        <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
-        </Modal.Header>
-        <Form onSubmit={handleSubmit}>
-          <Modal.Body>
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Carica un'immagine di profilo</Form.Label>
-              <Form.Control type="file" onChange={(e) => setImgToFetch(e)} />
-            </Form.Group>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              type="submit"
-              variant="outline-primary"
-              onClick={() => {
-                handleCloseProfilePicture();
-              }}
-            >
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Form>
-      </Modal>
+      {!params.id && (
+        <Modal show={showModalProfilePicture} onHide={handleCloseProfilePicture}>
+          <Modal.Header closeButton>
+            <Modal.Title></Modal.Title>
+          </Modal.Header>
+          <Form onSubmit={handleSubmit}>
+            <Modal.Body>
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Carica un'immagine di profilo</Form.Label>
+                <Form.Control type="file" onChange={(e) => setImgToFetch(e)} />
+              </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                type="submit"
+                variant="outline-primary"
+                onClick={() => {
+                  handleCloseProfilePicture();
+                }}
+              >
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Form>
+        </Modal>
+      )}
     </>
   );
 };

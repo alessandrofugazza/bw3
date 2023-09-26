@@ -9,7 +9,7 @@ const LowerSection = () => {
   const handleClose = () => setShow(false);
 
   return (
-    <Container className="p-4">
+    <Container className="p-0 mt-3">
       <Card className="mb-2">
         <Card.Body>
           <Card.Title>Consigliato per te</Card.Title>
