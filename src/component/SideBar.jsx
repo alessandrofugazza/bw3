@@ -30,7 +30,7 @@ const SideBar = () => {
     <Container className="p-4">
       <Row>
         <Col xs={12} className="mb-2 rounded border">
-          <Row className="align-items-start border-bottom">
+          <Row className="align-items-start border-bottom bg-light">
             <Col xs={9} className="d-flex flex-column text-start">
               <h5>Lingua del profilo</h5>
               <p className="text-muted">italiano</p>
@@ -39,7 +39,7 @@ const SideBar = () => {
               <Pencil />
             </Col>
           </Row>
-          <Row>
+          <Row className="bg-light">
             <Col xs={9} className="d-flex flex-column text-start">
               <h5>Public profile & URL</h5>
               <p className="text-muted text-start">www.linkedin.com/in/my-profile-name-id</p>
@@ -49,14 +49,14 @@ const SideBar = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} className="mb-2 border rounded p-0">
+        <Col xs={12} className="mb-2 border rounded p-0 bg-light text-center">
           <img
             className="rounded img-fluid "
             src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
             alt="adv"
           />
         </Col>
-        <Col xs={12} className="mb-2 d-flex flex-column align-items-start rounded border">
+        <Col xs={12} className="mb-2 d-flex flex-column align-items-start rounded border bg-light">
           <div className="border-bottom text-start">
             <h5>Persone che potresti conoscere</h5>
             <p className="text-muted">Dalla tua scuola/lavoro</p>
@@ -66,7 +66,7 @@ const SideBar = () => {
             sidebarFetchStudent.map((el, i) => {
               if (i < 10) {
                 return (
-                  <Row className="border-bottom" key={el._id}>
+                  <Row className="border-bottom bg-light" key={el._id}>
                     <Col xs={3} className="p-1">
                       <Link to={"/" + el._id}>
                         <img width={"45px"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
@@ -87,7 +87,7 @@ const SideBar = () => {
               }
             })}
         </Col>
-        <Col xs={12} className="mb-2 rounded border">
+        <Col xs={12} className="mb-2 rounded border bg-light">
           <div className="d-flex justify-content-start align-items-center ">
             <img
               width={"25rem"}
@@ -137,7 +137,7 @@ const SideBar = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={12} className="mb-2 border rounded p-0">
+        <Col xs={12} className="mb-2 border text-center rounded p-0 bg-light">
           <img
             className="rounded img-fluid"
             src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
