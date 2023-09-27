@@ -10,12 +10,38 @@ const SingleExperience = ({ exp, fecthExperience }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showModalImage, setShowModalImage] = useState(false);
+  const handleShowModalImage = () => setShowModalImage(true);
+  const handleCloseModalImage = () => setShowModalImage(false);
   const location = useLocation();
   const profile = useSelector((state) => state.profile.content);
   const idUser = profile._id;
 
   const changeExperience = (value, name) => {
     setExperience({ ...experience, [name]: value });
+  };
+
+  const handleSubmit = async (e, expId) => {
+    const formData = new FormData();
+
+    formData.append("experience", e.target[0].files[0]);
+
+    e.preventDefault();
+    try {
+      const resp = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" + idUser + "/experiences/" + expId + "/picture",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchPutExperience = async (expId) => {
@@ -72,7 +98,7 @@ const SingleExperience = ({ exp, fecthExperience }) => {
     <>
       <Row className=" border-bottom mt-3 pb-3 gx-5">
         <Col xs={1}>
-          <div className="bg-secondary" style={{ width: "40px", height: "40px" }}>
+          <div className="bg-secondary" onClick={handleShowModalImage} style={{ width: "40px", height: "40px" }}>
             {exp.img && <img alt="img-azienda" src={exp.img} />}
           </div>
         </Col>
@@ -172,6 +198,10 @@ const SingleExperience = ({ exp, fecthExperience }) => {
                 aria-label="scrivi una descrizione"
               />
             </InputGroup>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Inserisci un'immagine per il post</Form.Label>
+              <Form.Control type="file" />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -182,6 +212,25 @@ const SingleExperience = ({ exp, fecthExperience }) => {
             Save Changes
           </Button>
         </Modal.Footer>
+      </Modal>
+      <Modal show={showModalImage} onHide={handleCloseModalImage}>
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={(e) => handleSubmit(e, exp._id)}>
+          <Modal.Body>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Carica un'immagine per l'esperienza</Form.Label>
+              <Form.Control type="file" />
+            </Form.Group>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button type="submit" variant="outline-primary" onClick={() => handleCloseModalImage()}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
     </>
   );

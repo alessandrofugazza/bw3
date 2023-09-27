@@ -36,7 +36,7 @@ const BioProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target[0].files[0]);
+
     const formData = new FormData();
     formData.append("profile", e.target[0].files[0]);
 

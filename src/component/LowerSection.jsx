@@ -6,6 +6,8 @@ import ModalPost from "./ModalPost";
 import AttivitaProfile from "./AttivitàProfile";
 
 const LowerSection = () => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
   return (
     <Container className="p-0 mt-3">
       <Card className="mb-2">
@@ -216,6 +218,7 @@ const LowerSection = () => {
           </Row>
         </Card.Body>
       </Card>
+      <ModalPost show={show} setShow={setShow} />
     </Container>
   );
 };
