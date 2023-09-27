@@ -27,3 +27,31 @@ body {
   font-weight: 500;
   padding: 5px;
 }
+
+#contCoverLeft {
+  overflow: hidden;
+  height: 70px;
+  position: relative;
+}
+
+#imgCoverLeft {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#imgProfCoverLef {
+  height: 70px;
+  width: 70px;
+  top: 16%;
+  left: 37%;
+  position: absolute;
+  z-index: 2;
+}
+
+#imgProfileLeft {
+
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+}

@@ -146,9 +146,9 @@ const LowerSection = () => {
               <p className="text-primary fw-bold m-0">0 Follower</p>
             </div>
             <div>
-              <Button variant="outline-primary" className="rounded-pill" onClick={handleShow}>
+              {/*  <Button variant="outline-primary" className="rounded-pill" onClick={handleShow}>
                 Aggiungi un post
-              </Button>
+              </Button> */}
 
               <BiPencil className="fs-3 text-secondary" />
             </div>
