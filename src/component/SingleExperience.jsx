@@ -18,6 +18,30 @@ const SingleExperience = ({ exp, fecthExperience }) => {
     setExperience({ ...experience, [name]: value });
   };
 
+  const handleSubmit = async (e, expId) => {
+    e.preventDefault();
+    const formData = new FormData();
+    console.log(formData);
+    formData.append("experience", e.target[5].files[0]);
+
+    try {
+      const resp = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/" + idUser + "/experiences/:" + expId + "/picture",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+            "Content-type": "application/json",
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const fetchPutExperience = async (expId) => {
     try {
       const resp = await fetch(
@@ -99,7 +123,7 @@ const SingleExperience = ({ exp, fecthExperience }) => {
         <Modal.Body>
           <Form
             onSubmit={(e) => {
-              e.preventDefault();
+              handleSubmit(e, exp._id);
             }}
           >
             <Form.Group className="mb-3">
@@ -172,6 +196,10 @@ const SingleExperience = ({ exp, fecthExperience }) => {
                 aria-label="scrivi una descrizione"
               />
             </InputGroup>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Inserisci un'immagine per il post</Form.Label>
+              <Form.Control type="file" />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>

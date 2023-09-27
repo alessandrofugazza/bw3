@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Badge, Button, Card, Col, Container, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
 import { ArrowRight, BroadcastPin, EyeFill, PeopleFill, Plus } from "react-bootstrap-icons";
 import { BiPencil } from "react-icons/bi";
+import ModalPost from "./ModalPost";
 
 const LowerSection = () => {
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
   return (
     <Container className="p-0 mt-3">
       <Card className="mb-2">
@@ -241,6 +244,7 @@ const LowerSection = () => {
           </Row>
         </Card.Body>
       </Card>
+      <ModalPost show={show} setShow={setShow} />
     </Container>
   );
 };
