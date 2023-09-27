@@ -53,7 +53,7 @@ const BioProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e.target[0].files[0]);
+
     const formData = new FormData();
     formData.append("profile", e.target[0].files[0]);
 
@@ -252,7 +252,7 @@ const BioProfile = () => {
             <Modal.Body>
               <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Carica un'immagine di profilo</Form.Label>
-                <Form.Control type="file" onChange={(e) => setImgToFetch(e)} />
+                <Form.Control type="file" />
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
