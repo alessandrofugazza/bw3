@@ -13,6 +13,7 @@ const SingleExperience = ({ exp, fecthExperience }) => {
   const [showModalImage, setShowModalImage] = useState(false);
   const handleShowModalImage = () => setShowModalImage(true);
   const handleCloseModalImage = () => setShowModalImage(false);
+  const [imgExp, setImgExp] = useState("");
   const location = useLocation();
   const profile = useSelector((state) => state.profile.content);
   const idUser = profile._id;
@@ -39,6 +40,10 @@ const SingleExperience = ({ exp, fecthExperience }) => {
           },
         }
       );
+      if (resp.ok) {
+        const data = await resp.json();
+        setImgExp(data.image);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -99,7 +104,7 @@ const SingleExperience = ({ exp, fecthExperience }) => {
       <Row className=" border-bottom mt-3 pb-3 gx-5">
         <Col xs={1}>
           <div className="bg-secondary" onClick={handleShowModalImage} style={{ width: "40px", height: "40px" }}>
-            {exp.img && <img alt="img-azienda" src={exp.img} />}
+            {imgExp && <img alt="img-azienda" src={imgExp} style={{ width: "40px", height: "40px" }} />}
           </div>
         </Col>
         <Col xs={9}>
