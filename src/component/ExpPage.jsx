@@ -1,10 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
-import Main from "./Main";
+
 import SideBar from "./SideBar";
+import Experience from "./Experience";
 
-import LowerSection from "./LowerSection";
-
-const ProfilePage = () => {
+const ExpPage = () => {
   return (
     <>
       <Container>
@@ -13,8 +12,7 @@ const ProfilePage = () => {
             <Row>
               <Col xs={12} lg={8}>
                 {" "}
-                <Main />
-                <LowerSection />
+                <Experience />
               </Col>
               <Col xs={12} lg={4}>
                 <SideBar />
@@ -26,4 +24,4 @@ const ProfilePage = () => {
     </>
   );
 };
-export default ProfilePage;
+export default ExpPage;
