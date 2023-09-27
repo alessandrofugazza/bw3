@@ -8,6 +8,7 @@ import {
   Grid3x3GapFill,
   Search,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   return (
@@ -15,28 +16,50 @@ const TopBar = () => {
       <Container className=" d-flex justify-content-between">
         <Navbar.Collapse id="navbarScroll " className="justify-content-around">
           <div className="d-flex">
-            <img src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG6.png" alt="LinkLogo" style={{ width: "35px" }} />
+            <Link to="/">
+              {" "}
+              <img
+                src="https://pngimg.com/uploads/linkedIn/linkedIn_PNG6.png"
+                alt="LinkLogo"
+                style={{ width: "35px" }}
+              />
+            </Link>
             <Form className="position-relative ms-1">
               <Search className="position-absolute" style={{ left: "11px", top: "11px" }} />
               <Form.Control type="search" placeholder="Search " className="me-2 ps-5" aria-label="Search" />
             </Form>
           </div>
           <Nav className=" my-2 my-lg-0 d-flex justify-content-between" style={{ maxHeight: "100px" }} navbarScroll>
-            <Nav.Link className="d-flex flex-column justify-content-center align-items-center" href="#action1">
+            <Link
+              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
+              to="/home"
+            >
               <HouseDoorFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Home</span>
-            </Nav.Link>
-            <Nav.Link className="d-flex flex-column justify-content-center align-items-center" href="#action2">
+            </Link>
+            <Link
+              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
+              to="/rete"
+            >
               <PeopleFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Rete</span>
-            </Nav.Link>
-            <Nav.Link className="d-flex flex-column justify-content-center align-items-center" href="#action2">
+            </Link>
+            <Link
+              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
+              to="/lavoro"
+            >
               <BriefcaseFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Lavoro</span>
-            </Nav.Link>
-            <Nav.Link className="d-flex flex-column justify-content-center align-items-center" href="#action2">
+            </Link>
+            <Link
+              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
+              to="/messaggi"
+            >
               <ChatDotsFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Messaggistica</span>
-            </Nav.Link>
-            <Nav.Link className="d-flex flex-column justify-content-center align-items-center" href="#action2">
+            </Link>
+            <Link
+              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
+              to="/notifiche"
+            >
               <BellFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Notifiche</span>
-            </Nav.Link>
+            </Link>
             <div className="d-flex flex-column justify-content-center align-items-center me-2">
               <div style={{ width: "20px", height: "20px", borderRadius: "50%" }}>
                 {" "}
@@ -47,7 +70,9 @@ const TopBar = () => {
                 />{" "}
               </div>
               <NavDropdown title="Tu" id="navbarScrollingDropdown" style={{ paddingBlock: "0 px" }}>
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                <Link to="/" className="text-decoration-none">
+                  <NavDropdown.Item href="#action3">Your profile</NavDropdown.Item>
+                </Link>
                 <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>

@@ -64,9 +64,11 @@ const PostHome = () => {
           </Button>
         </Col>
       </Row>
-      {allPost.map((post) => (
-        <SinglePost post={post} />
-      ))}
+      {allPost.map((post, index) => {
+        if (index < 50) {
+          return <SinglePost key={`id-${post._id}`} post={post} />;
+        }
+      })}
       <ModalPost show={show} setShow={setShow} />
     </Container>
   );

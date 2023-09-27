@@ -16,7 +16,7 @@ export const fetchAllPost = () => {
       });
       const data = await resp.json();
 
-      dispatch({ type: SET_POST, payload: data });
+      dispatch({ type: SET_POST, payload: data.reverse() });
     } catch (error) {
       console.log(error);
     }
