@@ -14,7 +14,6 @@ const ProfilePage = () => {
               <Col xs={12} lg={8}>
                 {" "}
                 <Main />
-                <LowerSection />
               </Col>
               <Col xs={12} lg={4}>
                 <SideBar />

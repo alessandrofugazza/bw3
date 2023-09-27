@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Form, InputGroup, Modal } from "react-bootstrap";
+import { Button, Card, Container, Form, InputGroup, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { setProfile } from "../redux/action";
-import { async } from "q";
+import { fetchMeProfile, setProfile } from "../redux/action";
 
 const BioProfile = () => {
   const profile = useSelector((state) => state.profile.content);
   const [info, setInfo] = useState(null);
   const [show, setShow] = useState(false);
   const [showModalProfilePicture, setShowModalProfilePicture] = useState(false);
-  const [imgToFetch, setImgToFetch] = useState("ciao");
   const params = useParams();
   const dispatch = useDispatch();
 
@@ -20,21 +18,6 @@ const BioProfile = () => {
   const handleShowProfilePicture = () => setShowModalProfilePicture(true);
   const handleCloseProfilePicture = () => setShowModalProfilePicture(false);
 
-  const fetchMeProfile = async () => {
-    try {
-      const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
-        },
-      });
-      const data = await resp.json();
-      console.log(resp);
-      dispatch(setProfile(data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
   const fetchIdProfile = async () => {
     try {
       const resp = await fetch("https://striveschool-api.herokuapp.com/api/profile/" + params.id, {
@@ -76,7 +59,7 @@ const BioProfile = () => {
   };
 
   useEffect(() => {
-    params.id ? fetchIdProfile(params.id) : fetchMeProfile();
+    params.id ? fetchIdProfile(params.id) : dispatch(fetchMeProfile());
   }, [params.id]);
 
   useEffect(() => {
@@ -252,7 +235,7 @@ const BioProfile = () => {
             <Modal.Body>
               <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Carica un'immagine di profilo</Form.Label>
-                <Form.Control type="file" onChange={(e) => setImgToFetch(e)} />
+                <Form.Control type="file" />
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>

@@ -1,9 +1,26 @@
+import { useState } from "react";
 import { Button, FloatingLabel, Form, Modal } from "react-bootstrap";
 
-const ModalPost = () => {
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
+const ModalPost = ({ show, setShow }) => {
   const handleClose = () => setShow(false);
+  const [textPost, setTextPost] = useState("");
+
+  const changePost = (valore) => {
+    setTextPost(valore);
+  };
+
+  const fetchPostArticle = async () => {
+    const resp = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+      method: "POST",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ text: textPost }),
+    });
+  };
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -11,7 +28,14 @@ const ModalPost = () => {
       </Modal.Header>
       <Modal.Body>
         <FloatingLabel controlId="floatingTextarea2" label="Di cosa vorresti parlare?">
-          <Form.Control as="textarea" placeholder="Di cosa vorresti parlare?" style={{ height: "100px" }} />
+          <Form.Control
+            onChange={(e) => {
+              changePost(e.target.value);
+            }}
+            as="textarea"
+            placeholder="Di cosa vorresti parlare?"
+            style={{ height: "100px" }}
+          />
         </FloatingLabel>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Inserisci un'immagine per il post</Form.Label>
@@ -19,8 +43,8 @@ const ModalPost = () => {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-primary" onClick={handleClose}>
-          Save Changes
+        <Button variant="outline-primary" onClick={() => fetchPostArticle()}>
+          Posta Attività
         </Button>
       </Modal.Footer>
     </Modal>
