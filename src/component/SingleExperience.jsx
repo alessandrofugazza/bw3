@@ -5,7 +5,7 @@ import { BiPencil } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 
-const SingleExperience = ({ exp }) => {
+const SingleExperience = ({ exp, fecthExperience }) => {
   const [experience, setExperience] = useState(exp);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -32,6 +32,7 @@ const SingleExperience = ({ exp }) => {
           body: JSON.stringify(experience),
         }
       );
+      fecthExperience();
       handleClose();
     } catch (error) {
       console.log(error);
@@ -51,6 +52,7 @@ const SingleExperience = ({ exp }) => {
         }
       );
       handleClose();
+      fecthExperience();
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +72,9 @@ const SingleExperience = ({ exp }) => {
     <>
       <Row className=" border-bottom mt-3 pb-3 gx-5">
         <Col xs={1}>
-          <div className="bg-secondary" style={{ width: "40px", height: "40px" }}></div>
+          <div className="bg-secondary" style={{ width: "40px", height: "40px" }}>
+            {exp.img && <img alt="img-azienda" src={exp.img} />}
+          </div>
         </Col>
         <Col xs={9}>
           <span className="fw-semibold">{exp.role}</span> <br />

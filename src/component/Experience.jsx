@@ -93,7 +93,7 @@ const Experience = () => {
           </Col>
         </Row>
         {experience.length > 0 ? (
-          experience.map((exp) => <SingleExperience exp={exp} />)
+          experience.map((exp) => <SingleExperience exp={exp} fecthExperience={fecthExperience} />)
         ) : (
           <Row>
             <Col>
