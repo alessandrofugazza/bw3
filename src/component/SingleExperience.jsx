@@ -22,15 +22,13 @@ const SingleExperience = ({ exp, fecthExperience }) => {
     setExperience({ ...experience, [name]: value });
   };
 
-  const handleSubmit = async (e, expId) => {
+  const handleSubmit = async (e) => {
     const formData = new FormData();
+    formData.append("experience", e.target[6].files[0]);
 
-    formData.append("experience", e.target[0].files[0]);
-
-    e.preventDefault();
     try {
       const resp = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/" + idUser + "/experiences/" + expId + "/picture",
+        "https://striveschool-api.herokuapp.com/api/profile/" + idUser + "/experiences/" + exp._id + "/picture",
         {
           method: "POST",
           body: formData,
@@ -127,12 +125,17 @@ const SingleExperience = ({ exp, fecthExperience }) => {
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("ciao");
+            handleClose();
+            fetchPutExperience(exp._id);
+
+            handleSubmit(e);
+          }}
+        >
+          <Modal.Body>
             <Form.Group className="mb-3">
               <Form.Label column sm="2">
                 Ruolo
@@ -207,31 +210,12 @@ const SingleExperience = ({ exp, fecthExperience }) => {
               <Form.Label>Inserisci un'immagine per il post</Form.Label>
               <Form.Control type="file" />
             </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={() => fetchRemoveExp(exp._id)}>
-            Remove
-          </Button>
-          <Button variant="primary" type="submit" onClick={() => fetchPutExperience(exp._id)}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <Modal show={showModalImage} onHide={handleCloseModalImage}>
-        <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
-        </Modal.Header>
-        <Form onSubmit={(e) => handleSubmit(e, exp._id)}>
-          <Modal.Body>
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Carica un'immagine per l'esperienza</Form.Label>
-              <Form.Control type="file" />
-            </Form.Group>
           </Modal.Body>
-
           <Modal.Footer>
-            <Button type="submit" variant="outline-primary" onClick={() => handleCloseModalImage()}>
+            <Button variant="danger" onClick={() => fetchRemoveExp(exp._id)}>
+              Remove
+            </Button>
+            <Button variant="primary" type="submit">
               Save Changes
             </Button>
           </Modal.Footer>
