@@ -7,6 +7,7 @@ import Footer from "./component/Footer";
 import ExpPage from "./component/ExpPage";
 import HomePage from "./component/HomePage";
 import JobsPage from "./component/JobsPage";
+import NetworkPage from "./component/NetworkPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path={"/experience"} element={<ExpPage />} />
           <Route path={"/home"} element={<HomePage />} />
           <Route path={"/lavoro/:query?"} element={<JobsPage />} />
+          <Route path={"/rete"} element={<NetworkPage />} />
         </Routes>
 
         <Footer />

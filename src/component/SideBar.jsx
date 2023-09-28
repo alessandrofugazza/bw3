@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Pencil, PersonFillAdd } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { setUsers } from "../redux/action";
 
 const SideBar = () => {
-  const [sidebarFetchStudent, setSidebarFetchStudent] = useState(null);
+  const sidebarFetchStudent = useSelector((state) => state.users.content);
+  const dispatch = useDispatch();
 
   const fetchData = async () => {
     try {
@@ -16,7 +19,7 @@ const SideBar = () => {
       });
       if (resp.ok) {
         const data = await resp.json();
-        setSidebarFetchStudent(data);
+        dispatch(setUsers(data));
       }
     } catch (err) {
       console.log(err);

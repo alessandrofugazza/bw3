@@ -3,14 +3,25 @@ import profileReducer from "../reducer/profileReducer";
 import experienceReducer from "../reducer/experienceReducer";
 import postReducer from "../reducer/postReducer";
 import jobsReducer from "../reducer/jobsReducer";
+import friendReducer from "../reducer/friendReducer";
+import usersReducer from "../reducer/usersReducer";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   profile: profileReducer,
+  users: usersReducer,
   experience: experienceReducer,
   post: postReducer,
   jobs: jobsReducer,
+  friends: friendReducer,
 });
+
+const persistedReducer = persistReducer({ key: "root", whitelist: ["friends"], storage }, rootReducer);
+
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
+export const persistedStore = persistStore(store);
 export default store;

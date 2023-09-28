@@ -3,11 +3,12 @@ import { Button, Card, Container, Form, InputGroup, Modal } from "react-bootstra
 import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchMeProfile, setProfile } from "../redux/action";
-import { CgUserAdd } from "react-icons/cg";
+import { addFriend, delFriend, fetchMeProfile, setProfile } from "../redux/action";
+import { CgUserAdd, CgUserRemove } from "react-icons/cg";
 
 const BioProfile = () => {
   const profile = useSelector((state) => state.profile.content);
+  const friends = useSelector((state) => state.friends.content);
   const [info, setInfo] = useState(null);
   const [show, setShow] = useState(false);
   const [showModalProfilePicture, setShowModalProfilePicture] = useState(false);
@@ -120,9 +121,8 @@ const BioProfile = () => {
             >
               <img
                 onClick={() => handleShowProfilePicture()}
-                style={{
-                  width: "92px",
-                }}
+                className="img-fluid "
+                style={{ height: "100px" }}
                 src={profile.image}
                 alt="immagine profilo"
               />
@@ -150,10 +150,31 @@ const BioProfile = () => {
                 </>
               ) : (
                 <>
-                  <Button className="me-2 rounded-pill px-3 py-1" variant="primary">
-                    <CgUserAdd className="fs-4" />
-                    Collegati
-                  </Button>
+                  {friends.find((fav) => fav._id === profile._id) ? (
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(delFriend(profile));
+                      }}
+                      className="me-2 rounded-pill px-3 py-1"
+                      variant="outline-primary"
+                    >
+                      <CgUserRemove className="fs-4" />
+                      Rimuovi Collegamento
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(addFriend(profile));
+                      }}
+                      className="me-2 rounded-pill px-3 py-1"
+                      variant="primary"
+                    >
+                      <CgUserAdd className="fs-4" />
+                      Collegati
+                    </Button>
+                  )}
                   <Button className="me-2 rounded-pill px-3 py-1" variant="outline-primary">
                     Messaggio
                   </Button>

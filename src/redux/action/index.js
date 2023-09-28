@@ -1,15 +1,21 @@
 export const SET_PROFILE = "SET_PROFILE";
+export const SET_USERS = "SET_USERS";
 export const SET_EXPERIENCE = "SET_EXPERIECE";
 export const SET_POST = "SET_POST";
 export const SET_JOBS = "SET_JOBS";
 export const ADD_JOBS = "ADD_JOBS";
 export const DEL_JOBS = "DEL_JOBS";
+export const ADD_FRIEND = "ADD_FRIEND";
+export const DEL_FRIEND = "DEL_FRIEND";
 
 export const setProfile = (data) => ({ type: SET_PROFILE, payload: data });
+export const setUsers = (data) => ({ type: SET_USERS, payload: data });
 export const setExperience = (data) => ({ type: SET_EXPERIENCE, payload: data });
 export const setJobs = (data) => ({ type: SET_JOBS, payload: data });
 export const addJobs = (data) => ({ type: ADD_JOBS, payload: data });
 export const delJobs = (data) => ({ type: DEL_JOBS, payload: data });
+export const addFriend = (data) => ({ type: ADD_FRIEND, payload: data });
+export const delFriend = (data) => ({ type: DEL_FRIEND, payload: data });
 
 export const fetchAllPost = () => {
   return async (dispatch, getState) => {
