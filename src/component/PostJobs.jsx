@@ -8,6 +8,8 @@ import SingleJob from "./SingleJob";
 const PostJobs = () => {
   const dispatch = useDispatch();
   const allJobs = useSelector((state) => state.jobs.content);
+  const allFavJobs = useSelector((state) => state.jobs.favourite);
+
   const fetchAllJobs = async () => {
     const resp = await fetch("https://strive-benchmark.herokuapp.com/api/jobs", {
       headers: {
@@ -22,10 +24,18 @@ const PostJobs = () => {
   useEffect(() => {
     fetchAllJobs();
   }, []);
+
   return (
-    <Container>
+    <Container className="mt-4">
       <Row className="border rounded bg-white gy-3">
-        {allJobs && allJobs.data.map((job) => <SingleJob key={job._id} job={job} />)}
+        <h4>Offerte salvate:</h4>
+        {allFavJobs && allFavJobs.map((job) => <SingleJob key={job._id} job={job} />)}
+      </Row>
+      <Row className="border rounded bg-white gy-3 mt-3">
+        {allJobs &&
+          allJobs.data.map((job) => {
+            return allFavJobs.find((fav) => fav._id === job._id) ? "" : <SingleJob key={job._id} job={job} />;
+          })}
       </Row>
     </Container>
   );
