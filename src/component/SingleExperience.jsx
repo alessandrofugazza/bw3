@@ -18,6 +18,9 @@ const SingleExperience = ({ exp, fecthExperience }) => {
   const profile = useSelector((state) => state.profile.content);
   const idUser = profile._id;
 
+  const dateStart = new Date(exp.startDate);
+  const dateEnd = new Date(exp.endDate);
+
   const changeExperience = (value, name) => {
     setExperience({ ...experience, [name]: value });
   };
@@ -109,8 +112,9 @@ const SingleExperience = ({ exp, fecthExperience }) => {
           <span className="fw-semibold">{exp.role}</span> <br />
           <span>{exp.company}</span> <br />
           <span className="text-secondary ">
-            {exp.startDate}- {exp.endDate}
-          </span>{" "}
+            {dateStart.getDate() + "/" + dateStart.getMonth() + "/" + dateStart.getFullYear()}-
+            {dateEnd.getDate() + "/" + dateEnd.getMonth() + "/" + dateEnd.getFullYear()}
+          </span>
           <br />
           <span className="text-secondary ">{exp.area}</span>
         </Col>
