@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./component/Footer";
 import ExpPage from "./component/ExpPage";
 import HomePage from "./component/HomePage";
+import JobsPage from "./component/JobsPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path={"/:id?"} element={<ProfilePage />} />
           <Route path={"/experience"} element={<ExpPage />} />
           <Route path={"/home"} element={<HomePage />} />
+          <Route path={"/lavoro"} element={<JobsPage />} />
         </Routes>
 
         <Footer />
