@@ -23,7 +23,7 @@ const AttivitaProfile = () => {
 
   useEffect(() => {
     setPostProfile(allPost.filter((post) => userId === post.user.username));
-  }, [allPost]);
+  }, [allPost, userId]);
 
   return (
     <>

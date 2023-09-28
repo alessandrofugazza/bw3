@@ -11,6 +11,7 @@ const BioProfile = () => {
   const [show, setShow] = useState(false);
   const [showModalProfilePicture, setShowModalProfilePicture] = useState(false);
   const params = useParams();
+  console.log(params);
   const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);

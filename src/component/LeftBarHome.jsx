@@ -1,7 +1,11 @@
 import { Col, Container, Row, Image } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const LeftBarHome = () => {
+  const myProfile = useSelector((state) => state.profile.content);
+
   return (
     <Container className="mt-4">
       <Row className="">
@@ -11,17 +15,21 @@ const LeftBarHome = () => {
               <Image
                 className=""
                 id="imgCoverLeft"
-                src="https://thumbs.dreamstime.com/b/sunglasses-against-backdrop-sun-solar-eclipse-sunglasses-against-backdrop-sun-solar-eclipse-generative-ai-272337864.jpg"
+                src="https://images.unsplash.com/photo-1683009427619-a1a11b799e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
                 alt="CoverProfile"
               />
             </div>
 
             <div id="imgProfCoverLef">
-              <Image id="imgProfileLeft" src="https://www.w3schools.com/howto/img_avatar2.png" alt="ImgProfile" />
+              <Image id="imgProfileLeft" src={myProfile.image} alt="ImgProfile" />
             </div>
             <div className="mt-5 px-3 text-center border-bottom ">
-              <h4>Pino La Lavatrice</h4>
-              <p className="text-secondary">Riparatore di lavatrici professionale</p>
+              <Link to="/">
+                <h4>
+                  {myProfile.name} {myProfile.surname}
+                </h4>
+              </Link>
+              <p className="text-secondary">{myProfile.title}</p>
             </div>
           </div>
           <div className="border-bottom px-3 pb-2">
