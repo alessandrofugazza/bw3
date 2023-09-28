@@ -17,7 +17,7 @@ function App() {
           <Route path={"/:id?"} element={<ProfilePage />} />
           <Route path={"/experience"} element={<ExpPage />} />
           <Route path={"/home"} element={<HomePage />} />
-          <Route path={"/lavoro"} element={<JobsPage />} />
+          <Route path={"/lavoro/:query?"} element={<JobsPage />} />
         </Routes>
 
         <Footer />

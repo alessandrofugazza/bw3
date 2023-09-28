@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Container, Form, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import {
   HouseDoorFill,
@@ -8,9 +9,12 @@ import {
   Grid3x3GapFill,
   Search,
 } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TopBar = () => {
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary d-flex justify-content-center">
       <Container className=" d-flex justify-content-between">
@@ -24,9 +28,31 @@ const TopBar = () => {
                 style={{ width: "35px" }}
               />
             </Link>
-            <Form className="position-relative ms-1">
-              <Search className="position-absolute" style={{ left: "11px", top: "11px" }} />
-              <Form.Control type="search" placeholder="Search " className="me-2 ps-5" aria-label="Search" />
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigate("/lavoro/" + query);
+                setQuery("");
+              }}
+              className="position-relative ms-1"
+            >
+              <Search
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/lavoro/" + query);
+                  setQuery("");
+                }}
+                className="position-absolute"
+                style={{ left: "11px", top: "11px" }}
+              />
+              <Form.Control
+                onChange={(e) => setQuery(e.target.value)}
+                value={query}
+                type="search"
+                placeholder="Search "
+                className="me-2 ps-5"
+                aria-label="Search"
+              />
             </Form>
           </div>
           <Nav className=" my-2 my-lg-0 d-flex justify-content-between" style={{ maxHeight: "100px" }} navbarScroll>
