@@ -1,11 +1,22 @@
 import { Card, Col } from "react-bootstrap";
 import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addJobs, delJobs } from "../redux/action";
+import { addJobs, delJobs, setJobs } from "../redux/action";
 
 const SingleJob = ({ job }) => {
   const favourite = useSelector((state) => state.jobs.favourite);
   const dispatch = useDispatch();
+
+  const fetchCompany = async () => {
+    const resp = await fetch("https://strive-benchmark.herokuapp.com/api/jobs?company=" + job.company_name, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzliYjM3NTJhODAwMTQ1Njg3NjUiLCJpYXQiOjE2OTU2Mjc3MDcsImV4cCI6MTY5NjgzNzMwN30.4BcdJm9NGzCRCfUXd__fN8D0mZG4DURnYc4zl0Oh6Uk",
+      },
+    });
+    const data = await resp.json();
+    dispatch(setJobs(data));
+  };
 
   return (
     <Col xs={12}>
@@ -26,7 +37,14 @@ const SingleJob = ({ job }) => {
                 <BsFillBookmarkFill className="fs-4 text-secondary" onClick={() => dispatch(addJobs(job))} />
               )}
             </div>
-            <Card.Subtitle className="mb-2 text-muted">{job.company_name}</Card.Subtitle>
+            <Card.Subtitle
+              className="mb-2 text-muted"
+              onClick={() => {
+                fetchCompany();
+              }}
+            >
+              {job.company_name}
+            </Card.Subtitle>
             <Card.Text>{job.candidate_required_location}</Card.Text>
             <Card.Link href={job.url}>Link Company</Card.Link>
           </Card.Body>
