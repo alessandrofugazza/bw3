@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import { Card, Placeholder } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import ModalPutDelPost from "./ModalPutDelPost";
 import { useState } from "react";
@@ -35,6 +35,8 @@ const SinglePost = ({ post }) => {
             </div>
             <Card.Subtitle className="mb-2 text-muted">{post.user.title}</Card.Subtitle>
             <Card.Text>{post.text}</Card.Text>
+
+            <Card.Img style={{ maxWidth: "600px", maxHeight: "200px" }} variant="bottom" src={post.image} />
           </Card.Body>
         </div>
       </Card>
