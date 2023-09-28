@@ -1,9 +1,11 @@
 export const SET_PROFILE = "SET_PROFILE";
 export const SET_EXPERIENCE = "SET_EXPERIECE";
 export const SET_POST = "SET_POST";
+export const SET_JOBS = "SET_JOBS";
 
 export const setProfile = (data) => ({ type: SET_PROFILE, payload: data });
 export const setExperience = (data) => ({ type: SET_EXPERIENCE, payload: data });
+export const setJobs = (data) => ({ type: SET_JOBS, payload: data });
 
 export const fetchAllPost = () => {
   return async (dispatch, getState) => {
