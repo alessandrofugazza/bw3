@@ -4,6 +4,7 @@ import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchMeProfile, setProfile } from "../redux/action";
+import { CgUserAdd } from "react-icons/cg";
 
 const BioProfile = () => {
   const profile = useSelector((state) => state.profile.content);
@@ -135,15 +136,32 @@ const BioProfile = () => {
             <br />
             <Link className="text-decoration-none text-primary">3 collegamenti</Link>
             <div className="mt-2">
-              <Button className="me-2 rounded-pill px-3 py-1" variant="primary">
-                Disponibile per
-              </Button>
-              <Button className="me-2 rounded-pill px-3 py-1" variant="outline-primary">
-                Aggiungi sezione profilo
-              </Button>
-              <Button className="me-2 rounded-pill px-3 py-1" variant="outline-secondary">
-                Altro
-              </Button>
+              {!params.id ? (
+                <>
+                  <Button className="me-2 rounded-pill px-3 py-1" variant="primary">
+                    Disponibile per
+                  </Button>
+                  <Button className="me-2 rounded-pill px-3 py-1" variant="outline-primary">
+                    Aggiungi sezione profilo
+                  </Button>
+                  <Button className="me-2 rounded-pill px-3 py-1" variant="outline-secondary">
+                    Altro
+                  </Button>{" "}
+                </>
+              ) : (
+                <>
+                  <Button className="me-2 rounded-pill px-3 py-1" variant="primary">
+                    <CgUserAdd className="fs-4" />
+                    Collegati
+                  </Button>
+                  <Button className="me-2 rounded-pill px-3 py-1" variant="outline-primary">
+                    Messaggio
+                  </Button>
+                  <Button className="me-2 rounded-pill px-3 py-1" variant="outline-secondary">
+                    Altro
+                  </Button>
+                </>
+              )}
             </div>
           </Card.Body>
         </Card>

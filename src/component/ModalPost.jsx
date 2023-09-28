@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button, FloatingLabel, Form, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { fetchAllPost } from "../redux/action";
 
 const ModalPost = ({ show, setShow }) => {
   const handleClose = () => setShow(false);
   const [textPost, setTextPost] = useState("");
+  const dispatch = useDispatch();
 
   const changePost = (valore) => {
     setTextPost(valore);
@@ -19,6 +22,8 @@ const ModalPost = ({ show, setShow }) => {
       },
       body: JSON.stringify({ text: textPost }),
     });
+    handleClose();
+    dispatch(fetchAllPost());
   };
 
   return (
