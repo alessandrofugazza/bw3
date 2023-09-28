@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
-import { BiPencil } from "react-icons/bi";
 import ModalPost from "./ModalPost";
 import { ArrowRight } from "react-bootstrap-icons";
 import { useLocation } from "react-router-dom";

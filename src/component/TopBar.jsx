@@ -30,34 +30,19 @@ const TopBar = () => {
             </Form>
           </div>
           <Nav className=" my-2 my-lg-0 d-flex justify-content-between" style={{ maxHeight: "100px" }} navbarScroll>
-            <Link
-              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
-              to="/home"
-            >
+            <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/home">
               <HouseDoorFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Home</span>
             </Link>
-            <Link
-              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
-              to="/rete"
-            >
+            <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/rete">
               <PeopleFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Rete</span>
             </Link>
-            <Link
-              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
-              to="/lavoro"
-            >
+            <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/lavoro">
               <BriefcaseFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Lavoro</span>
             </Link>
-            <Link
-              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
-              to="/messaggi"
-            >
+            <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/messaggi">
               <ChatDotsFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Messaggistica</span>
             </Link>
-            <Link
-              className="d-flex flex-column justify-content-center align-items-center text-decoration-none text-secondary"
-              to="/notifiche"
-            >
+            <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/notifiche">
               <BellFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Notifiche</span>
             </Link>
             <div className="d-flex flex-column justify-content-center align-items-center me-2">

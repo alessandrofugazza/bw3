@@ -24,7 +24,7 @@ const LeftBarHome = () => {
               <Image id="imgProfileLeft" src={myProfile.image} alt="ImgProfile" />
             </div>
             <div className="mt-5 px-3 text-center border-bottom ">
-              <Link to="/">
+              <Link to="/" className="nav-link">
                 <h4>
                   {myProfile.name} {myProfile.surname}
                 </h4>
@@ -44,7 +44,7 @@ const LeftBarHome = () => {
             <h6 className="">Prova Premium gratis</h6>
           </div>
           <div className="px-3 my-3 d-flex">
-            <i class="bi bi-bookmark-fill text-secondary"></i>
+            <i className="bi bi-bookmark-fill text-secondary"></i>
             <p className="mb-0 ps-2 fw-bold text-secondary">I miei elementi</p>
           </div>
         </Col>
