@@ -128,7 +128,7 @@ const SingleExperience = ({ exp, fecthExperience }) => {
         <Form
           onSubmit={(e) => {
             e.preventDefault();
-            console.log("ciao");
+
             handleClose();
             fetchPutExperience(exp._id);
 
