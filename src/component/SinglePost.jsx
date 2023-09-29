@@ -28,7 +28,9 @@ const SinglePost = ({ post }) => {
               <div className="d-flex justify-content-between align-items-center">
                 {" "}
                 <Link to={`/${post.user._id}`} className="nav-link">
-                  <Card.Title>{post.username}</Card.Title>{" "}
+                  <Card.Title>
+                    {post.user.name} {post.user.surname}
+                  </Card.Title>{" "}
                 </Link>
                 {post.user._id === "651139bb3752a80014568765" && (
                   <BiPencil onClick={() => handleShow()} className="fs-3 text-secondary" />

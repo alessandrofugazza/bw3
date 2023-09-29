@@ -21,8 +21,6 @@ function App() {
           <Route path={"/lavoro/:query?"} element={<JobsPage />} />
           <Route path={"/rete"} element={<NetworkPage />} />
         </Routes>
-
-        <Footer />
       </BrowserRouter>
     </div>
   );

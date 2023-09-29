@@ -10,7 +10,7 @@ const PostJobs = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const allJobs = useSelector((state) => state.jobs.content);
-  const allFavJobs = useSelector((state) => state.jobs.favourite);
+  const allFavJobs = useSelector((state) => state.favouriteJobs.content);
 
   const fetchAllJobs = async () => {
     const resp = await fetch("https://strive-benchmark.herokuapp.com/api/jobs", {

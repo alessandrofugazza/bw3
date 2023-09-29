@@ -9,11 +9,12 @@ import {
   Grid3x3GapFill,
   Search,
 } from "react-bootstrap-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const TopBar = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary d-flex justify-content-center">
@@ -58,18 +59,43 @@ const TopBar = () => {
           <Nav className=" my-2 my-lg-0 d-flex justify-content-between" style={{ maxHeight: "100px" }} navbarScroll>
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/home">
               <HouseDoorFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Home</span>
+              {location.pathname === "/home" ? (
+                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+              ) : (
+                <div style={{ width: "100%", height: "3px" }}></div>
+              )}
             </Link>
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/rete">
               <PeopleFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Rete</span>
+              {location.pathname === "/rete" ? (
+                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+              ) : (
+                <div style={{ width: "100%", height: "3px" }}></div>
+              )}
             </Link>
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/lavoro">
               <BriefcaseFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Lavoro</span>
+              {location.pathname === "/lavoro" ? (
+                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+              ) : (
+                <div style={{ width: "100%", height: "3px" }}></div>
+              )}
             </Link>
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/messaggi">
               <ChatDotsFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Messaggistica</span>
+              {location.pathname === "/messaggi" ? (
+                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+              ) : (
+                <div style={{ width: "100%", height: "3px" }}></div>
+              )}
             </Link>
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/notifiche">
               <BellFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Notifiche</span>
+              {location.pathname === "/notifiche" ? (
+                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+              ) : (
+                <div style={{ width: "100%", height: "3px" }}></div>
+              )}
             </Link>
             <div className="d-flex flex-column justify-content-center align-items-center me-2">
               <div style={{ width: "20px", height: "20px", borderRadius: "50%" }}>
@@ -84,19 +110,11 @@ const TopBar = () => {
                 <Link to="/" className="text-decoration-none">
                   <NavDropdown.Item href="#action3">Your profile</NavDropdown.Item>
                 </Link>
-                <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
               </NavDropdown>
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center border-start">
               <Grid3x3GapFill className="fs-4" />
-              <NavDropdown title="Per le aziende" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
-              </NavDropdown>
+              <NavDropdown title="Per le aziende" id="navbarScrollingDropdown"></NavDropdown>
             </div>
           </Nav>
         </Navbar.Collapse>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addJobs, delJobs, setJobs } from "../redux/action";
 
 const SingleJob = ({ job }) => {
-  const favourite = useSelector((state) => state.jobs.favourite);
+  const favourite = useSelector((state) => state.favouriteJobs.content);
   const dispatch = useDispatch();
 
   const fetchCompany = async () => {

@@ -32,8 +32,8 @@ const SideBar = () => {
   return (
     <Container className="p-4">
       <Row>
-        <Col xs={12} className="mb-2 rounded border">
-          <Row className="align-items-start border-bottom bg-light">
+        <Col xs={12} className="mb-2 rounded border bg-light ">
+          <Row className="align-items-start border-bottom  py-2">
             <Col xs={9} className="d-flex flex-column text-start">
               <h5>Lingua del profilo</h5>
               <p className="text-muted">italiano</p>
@@ -42,7 +42,7 @@ const SideBar = () => {
               <Pencil />
             </Col>
           </Row>
-          <Row className="bg-light">
+          <Row className="py-2">
             <Col xs={9} className="d-flex flex-column text-start">
               <h5>Public profile & URL</h5>
               <p className="text-muted text-start">www.linkedin.com/in/my-profile-name-id</p>
@@ -59,7 +59,7 @@ const SideBar = () => {
             alt="adv"
           />
         </Col>
-        <Col xs={12} className="mb-2 d-flex flex-column align-items-start rounded border bg-light">
+        <Col xs={12} className="py-2 mb-2 d-flex flex-column align-items-start rounded border bg-light">
           <div className="border-bottom text-start">
             <h5>Persone che potresti conoscere</h5>
             <p className="text-muted">Dalla tua scuola/lavoro</p>
@@ -69,10 +69,10 @@ const SideBar = () => {
             sidebarFetchStudent.map((el, i) => {
               if (i < 10) {
                 return (
-                  <Row className="border-bottom bg-light" key={el._id}>
+                  <Row className="border-bottom bg-light p-2 m-2" key={el._id}>
                     <Col xs={3} className="p-1">
                       <Link to={"/" + el._id}>
-                        <img width={"45px"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
+                        <img width={"80px"} className="rounded-circle img-fluid" src={el.image} alt="profile-foto" />
                       </Link>
                     </Col>
 

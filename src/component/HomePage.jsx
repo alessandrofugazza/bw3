@@ -3,6 +3,7 @@ import SideBar from "./SideBar";
 
 import LeftBarHome from "./LeftBarHome";
 import PostHome from "./PostHome";
+import Footer from "./Footer";
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
           <SideBar />
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
 };

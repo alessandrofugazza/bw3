@@ -1,7 +1,8 @@
 import { Button, Card, Col } from "react-bootstrap";
 import { CgUserAdd } from "react-icons/cg";
 import { addFriend } from "../redux/action";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SingleUserCard = ({ user }) => {
   const dispatch = useDispatch();
@@ -26,14 +27,19 @@ const SingleUserCard = ({ user }) => {
               border: "2px solid white",
             }}
           >
-            <img className="img-fluid" src={user.image} alt="img-profile" />
+            {" "}
+            <Link className="nav-link" to={"/" + user._id}>
+              <img className="img-fluid" src={user.image} alt="img-profile" />{" "}
+            </Link>
           </div>
         </div>
         <Card.Body className="text-center mt-4 d-flex flex-column justify-content-between">
           <div>
-            <Card.Title>
-              {user.name} {user.surname}
-            </Card.Title>
+            <Link className="nav-link" to={"/" + user._id}>
+              <Card.Title>
+                {user.name} {user.surname}
+              </Card.Title>
+            </Link>
             <Card.Text>{user.title}.</Card.Text>
           </div>
           <Button

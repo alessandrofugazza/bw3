@@ -3,6 +3,7 @@ import Main from "./Main";
 import SideBar from "./SideBar";
 
 import LowerSection from "./LowerSection";
+import Footer from "./Footer";
 
 const ProfilePage = () => {
   return (
@@ -21,6 +22,7 @@ const ProfilePage = () => {
             </Row>
           </Col>
         </Row>
+        <Footer />
       </Container>
     </>
   );
