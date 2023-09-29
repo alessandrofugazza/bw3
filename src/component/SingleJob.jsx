@@ -1,5 +1,5 @@
 import { Card, Col } from "react-bootstrap";
-import { BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
+import { BsFillBookmarkFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addJobs, delJobs, setJobs } from "../redux/action";
 

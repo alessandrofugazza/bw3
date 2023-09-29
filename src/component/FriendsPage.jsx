@@ -1,4 +1,4 @@
-import { Button, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
+import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { delFriend } from "../redux/action";
 import { CgUserRemove } from "react-icons/cg";

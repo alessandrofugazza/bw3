@@ -1,4 +1,3 @@
-import { async } from "q";
 import { useEffect, useState } from "react";
 import { Button, Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";

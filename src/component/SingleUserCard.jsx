@@ -8,7 +8,7 @@ const SingleUserCard = ({ user }) => {
   const dispatch = useDispatch();
 
   return (
-    <Col xs={4} lg={3}>
+    <Col xs={10} sm={6} md={4} xl={3}>
       <Card className="h-100">
         <div className="position-relative">
           <Card.Img

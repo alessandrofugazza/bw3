@@ -2,8 +2,7 @@ import { Card, Col, Placeholder } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import ModalPutDelPost from "./ModalPutDelPost";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SinglePost = ({ post }) => {
   const [show, setShow] = useState(false);
@@ -17,13 +16,19 @@ const SinglePost = ({ post }) => {
             className="d-flex
           "
           >
-            <Link to={`/${post.user._id}`}>
-              <img
-                src={post.user.image}
-                alt="img-profile"
-                style={{ width: "50px", height: "50px", borderRadius: "50%", margin: "10px" }}
-              />
-            </Link>
+            {post.user.image ? (
+              <Link to={`/${post.user._id}`}>
+                <img
+                  src={post.user.image}
+                  alt="img-profile"
+                  style={{ width: "50px", height: "50px", borderRadius: "50%", margin: "10px" }}
+                />
+              </Link>
+            ) : (
+              <Placeholder as="p" animation="glow">
+                <Placeholder xs={12} />
+              </Placeholder>
+            )}
             <Card.Body>
               <div className="d-flex justify-content-between align-items-center">
                 {" "}

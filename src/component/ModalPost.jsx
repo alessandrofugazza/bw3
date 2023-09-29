@@ -42,10 +42,6 @@ const ModalPost = ({ show, setShow }) => {
             style={{ height: "100px" }}
           />
         </FloatingLabel>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Inserisci un'immagine per il post</Form.Label>
-          <Form.Control type="file" />
-        </Form.Group>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-primary" onClick={() => fetchPostArticle()}>

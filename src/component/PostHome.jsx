@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { fetchAllPost, fetchMeProfile } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import SinglePost from "./SinglePost";

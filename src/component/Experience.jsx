@@ -6,7 +6,6 @@ import { setExperience } from "../redux/action";
 import { useEffect, useState } from "react";
 import SingleExperience from "./SingleExperience";
 import { Link, useLocation } from "react-router-dom";
-import { async } from "q";
 
 const Experience = () => {
   const experience = useSelector((state) => state.experience.content);

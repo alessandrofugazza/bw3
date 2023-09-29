@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Badge, Button, Card, Col, Container, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
+import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { ArrowRight, BroadcastPin, EyeFill, PeopleFill, Plus } from "react-bootstrap-icons";
 import { BiPencil } from "react-icons/bi";
 import ModalPost from "./ModalPost";

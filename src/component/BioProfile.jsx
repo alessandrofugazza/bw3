@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Card, Container, Form, InputGroup, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { addFriend, delFriend, fetchMeProfile, setProfile } from "../redux/action";
 import { CgUserAdd, CgUserRemove } from "react-icons/cg";
 
@@ -15,6 +15,7 @@ const BioProfile = () => {
   const params = useParams();
   console.log(params);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -121,7 +122,7 @@ const BioProfile = () => {
             >
               <img
                 onClick={() => handleShowProfilePicture()}
-                className="img-fluid "
+                className={`${location.pathname !== "/" ? "img-fluid" : "img-fluid on-hover"}`}
                 style={{ height: "100px" }}
                 src={profile.image}
                 alt="immagine profilo"
