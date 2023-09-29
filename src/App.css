@@ -61,3 +61,6 @@ body {
   cursor: pointer;
   transform: scale(1.2);
 }
+.pointer {
+  cursor: pointer;
+}

@@ -1,8 +1,9 @@
 import { Row } from "react-bootstrap";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import SingleUserCard from "./SingleUserCard";
+import { setImg } from "../redux/action";
 
 const UsersList = () => {
   const allUsers = useSelector((state) => state.users.content);

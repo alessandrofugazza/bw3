@@ -83,9 +83,9 @@ const Experience = () => {
             <h6 className="fw-bold">Esperienze</h6>
             {idUser === "651139bb3752a80014568765" && (
               <div>
-                <AiOutlinePlus onClick={() => handleShow()} className="fs-3 text-secondary mx-4" />
+                <AiOutlinePlus onClick={() => handleShow()} className="fs-3 text-secondary mx-4 pointer" />
                 <Link to="/experience">
-                  {location.pathname === "/" && <BiPencil className="fs-3 text-secondary" />}
+                  {location.pathname === "/" && <BiPencil className="fs-3 text-secondary " />}
                 </Link>
               </div>
             )}

@@ -3,7 +3,6 @@ import "./App.css";
 import ProfilePage from "./component/ProfilePage";
 import TopBar from "./component/TopBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./component/Footer";
 import ExpPage from "./component/ExpPage";
 import HomePage from "./component/HomePage";
 import JobsPage from "./component/JobsPage";
