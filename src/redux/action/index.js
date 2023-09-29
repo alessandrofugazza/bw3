@@ -7,6 +7,7 @@ export const ADD_JOBS = "ADD_JOBS";
 export const DEL_JOBS = "DEL_JOBS";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const DEL_FRIEND = "DEL_FRIEND";
+export const SET_IMG = "SET_IMG";
 
 export const setProfile = (data) => ({ type: SET_PROFILE, payload: data });
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
@@ -16,6 +17,7 @@ export const addJobs = (data) => ({ type: ADD_JOBS, payload: data });
 export const delJobs = (data) => ({ type: DEL_JOBS, payload: data });
 export const addFriend = (data) => ({ type: ADD_FRIEND, payload: data });
 export const delFriend = (data) => ({ type: DEL_FRIEND, payload: data });
+export const setImg = (data) => ({ type: SET_IMG, payload: data });
 
 export const fetchAllPost = () => {
   return async (dispatch, getState) => {

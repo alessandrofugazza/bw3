@@ -8,6 +8,7 @@ import usersReducer from "../reducer/usersReducer";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import favouriteJobsReducer from "../reducer/favouriteJobsReducer";
+import imageReducer from "../reducer/imageReducer";
 
 const rootReducer = combineReducers({
   profile: profileReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   jobs: jobsReducer,
   favouriteJobs: favouriteJobsReducer,
   friends: friendReducer,
+  image: imageReducer,
 });
 
 const persistedReducer = persistReducer({ key: "root", whitelist: ["friends", "favouriteJobs"], storage }, rootReducer);

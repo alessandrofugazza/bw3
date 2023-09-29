@@ -9,6 +9,8 @@ import { CgUserAdd, CgUserRemove } from "react-icons/cg";
 const BioProfile = () => {
   const profile = useSelector((state) => state.profile.content);
   const friends = useSelector((state) => state.friends.content);
+  const image = useSelector((state) => state.image.content);
+
   const [info, setInfo] = useState(null);
   const [show, setShow] = useState(false);
   const [showModalProfilePicture, setShowModalProfilePicture] = useState(false);
@@ -55,7 +57,7 @@ const BioProfile = () => {
         },
       });
       if (resp.ok) {
-        const result = await resp.json();
+        dispatch(fetchMeProfile());
       }
     } catch (error) {
       console.log(error);
@@ -99,14 +101,10 @@ const BioProfile = () => {
     <>
       <Container className="p-0 pt-4">
         <Card style={{ width: "100%" }}>
-          <Card.Img
-            style={{ height: "200px" }}
-            variant="top"
-            src="https://images.unsplash.com/photo-1683009427619-a1a11b799e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
-          />
+          <Card.Img style={{ height: "200px" }} variant="top" src={image[Math.floor(Math.random() * 11)]} />
           <Card.Body className="text-start position-relative">
             <div className="text-end mt-2 ">
-              <BiPencil onClick={() => handleShow()} className="fs-3 text-secondary" />
+              {!params.id && <BiPencil onClick={() => handleShow()} className="fs-3 text-secondary pointer" />}
             </div>
             <div
               style={{
@@ -123,7 +121,7 @@ const BioProfile = () => {
               <img
                 onClick={() => handleShowProfilePicture()}
                 className={`${location.pathname !== "/" ? "img-fluid" : "img-fluid on-hover"}`}
-                style={{ height: "100px" }}
+                style={{ height: "100px", objectFit: "cover" }}
                 src={profile.image}
                 alt="immagine profilo"
               />

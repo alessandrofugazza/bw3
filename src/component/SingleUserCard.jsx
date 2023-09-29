@@ -1,21 +1,19 @@
 import { Button, Card, Col } from "react-bootstrap";
 import { CgUserAdd } from "react-icons/cg";
-import { addFriend } from "../redux/action";
-import { useDispatch } from "react-redux";
+import { addFriend, setImg } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const SingleUserCard = ({ user }) => {
   const dispatch = useDispatch();
+  const image = useSelector((state) => state.image.content);
 
   return (
     <Col xs={10} sm={6} md={4} xl={3}>
       <Card className="h-100">
         <div className="position-relative">
-          <Card.Img
-            style={{ height: "80px" }}
-            variant="top"
-            src="https://images.unsplash.com/photo-1683009427619-a1a11b799e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
-          />
+          <Card.Img style={{ height: "80px" }} variant="top" src={image[Math.floor(Math.random() * 11)]} />
           <div
             className="position-absolute bg-secondary rounded-circle"
             style={{
