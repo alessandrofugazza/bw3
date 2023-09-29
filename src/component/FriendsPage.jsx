@@ -9,9 +9,9 @@ const FriendsPage = () => {
   const dispatch = useDispatch();
   return (
     <Container>
-      <Row className="border bg-white mt-4 gy-5">
+      <Row className="border bg-white mt-3 gy-5 p-3">
         <Col xs={12}>
-          <h3 className="mt-3">Persone a cui sei collegato:</h3>
+          <h3>Persone a cui sei collegato:</h3>
           <ListGroup>
             {allFriends.map((friend) => (
               <ListGroup.Item className="my-1 p-2">

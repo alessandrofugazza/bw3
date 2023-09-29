@@ -9,7 +9,7 @@ const friendReducer = (state = initialState, action) => {
     case ADD_FRIEND:
       return { content: [...state.content, action.payload] };
     case DEL_FRIEND:
-      return { content: state.content.filter((friend) => friend !== action.payload) };
+      return { content: state.content.filter((friend) => friend._id !== action.payload._id) };
 
     default:
       return state;

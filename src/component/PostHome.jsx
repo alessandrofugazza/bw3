@@ -11,6 +11,7 @@ import ModalPost from "./ModalPost";
 const PostHome = () => {
   const dispatch = useDispatch();
   const allPost = useSelector((state) => state.post.content);
+  const allFriends = useSelector((state) => state.friends.content);
   const myProfile = useSelector((state) => state.profile.content);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -22,7 +23,7 @@ const PostHome = () => {
 
   return (
     <Container>
-      <Row className="bg-white mt-4">
+      <Row className="border rounded bg-white my-4">
         <Col xs={12} className="p-3">
           <div className="d-flex">
             <img
@@ -64,11 +65,25 @@ const PostHome = () => {
           </Button>
         </Col>
       </Row>
-      {allPost.map((post, index) => {
-        if (index < 50) {
-          return <SinglePost key={`id-${post._id}`} post={post} />;
-        }
-      })}
+      {allFriends.length > 0 && (
+        <Row className="bg-white border rounded mb-4">
+          <h5 className="mt-3">Post dei tuoi Amici:</h5>
+          {allPost
+            .filter((post) => allFriends.map((friend) => friend._id).includes(post.user._id))
+            .map((post) => (
+              <SinglePost key={`id-${post._id}`} post={post} />
+            ))}
+        </Row>
+      )}
+
+      <Row className="bg-white border rounded mb-4">
+        <h5 className="mt-3">Altri Post:</h5>
+        {allPost.map((post, index) => {
+          if (index < 20) {
+            return <SinglePost key={`id-${post._id}`} post={post} />;
+          }
+        })}
+      </Row>
       <ModalPost show={show} setShow={setShow} />
     </Container>
   );

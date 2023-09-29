@@ -112,8 +112,13 @@ const SingleExperience = ({ exp, fecthExperience }) => {
           <span className="fw-semibold">{exp.role}</span> <br />
           <span>{exp.company}</span> <br />
           <span className="text-secondary ">
-            {dateStart.getDate() + "/" + dateStart.getMonth() + "/" + dateStart.getFullYear()}-
-            {dateEnd.getDate() + "/" + dateEnd.getMonth() + "/" + dateEnd.getFullYear()}
+            {dateStart.getDate() < 10
+              ? "0" + dateStart.getDate() + "/" + dateStart.getMonth() + "/" + dateStart.getFullYear()
+              : dateStart.getDate() + "/" + dateStart.getMonth() + "/" + dateStart.getFullYear()}
+            -
+            {dateEnd.getDate() < 10
+              ? "0" + dateEnd.getDate() + "/" + dateEnd.getMonth() + "/" + dateEnd.getFullYear()
+              : dateEnd.getDate() + "/" + dateEnd.getMonth() + "/" + dateEnd.getFullYear()}
           </span>
           <br />
           <span className="text-secondary ">{exp.area}</span>

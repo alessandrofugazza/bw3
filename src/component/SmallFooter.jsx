@@ -4,23 +4,39 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const SmallFooter = () => {
   return (
     <Container className="d-flex justify-content-center align-items-center flex-wrap m-4 ">
+      <img
+        className="rounded img-fluid "
+        src="https://media.licdn.com/media/AAYQAgTPAAgAAQAAAAAAADVuOvKzTF-3RD6j-qFPqhubBQ.png"
+        alt="adv"
+      />
       <Row className="my-1">
         <Col>
           {" "}
-          <p className="m-0">Informazioni </p>
+          <p className="m-0 text-muted" style={{ fontSize: "13px" }}>
+            Informazioni{" "}
+          </p>
         </Col>
         <Col>
           {" "}
-          <p className="m-0">Accessibilità</p>
+          <p className="m-0 text-muted" style={{ fontSize: "13px" }}>
+            Accessibilità
+          </p>
         </Col>
       </Row>
       <Row className="my-1 ">
         <Col>
           {" "}
-          <p className="m-0">Centro assistenza</p>
+          <p className="m-0 text-muted" style={{ fontSize: "13px" }}>
+            Centro assistenza
+          </p>
         </Col>
         <Col>
-          <NavDropdown title="Privacy e condizioni" id="navbarScrollingDropdown" style={{ paddingBlock: "0 px" }}>
+          <NavDropdown
+            title="Privacy e condizioni"
+            id="navbarScrollingDropdown"
+            style={{ fontSize: "13px", paddingBlock: "0 px" }}
+            className="text-muted"
+          >
             <NavDropdown.Item href="#action3" className="fw-bold">
               Informativa sulla privacy
             </NavDropdown.Item>
@@ -43,15 +59,24 @@ const SmallFooter = () => {
       <Row className="my-1">
         <Col>
           {" "}
-          <p className="m-0">Opzioni per gli annunci pubblicitari</p>
+          <p className="m-0 text-muted" style={{ fontSize: "13px" }}>
+            Opzioni per gli annunci pubblicitari
+          </p>
         </Col>
       </Row>
       <Row className="my-1">
         <Col>
-          <p className="m-0">Pubblicità</p>
+          <p className="m-0 text-muted" style={{ fontSize: "13px" }}>
+            Pubblicità
+          </p>
         </Col>
         <Col>
-          <NavDropdown title="Servizi alle aziende" id="navbarScrollingDropdown" style={{ paddingBlock: "0 px" }}>
+          <NavDropdown
+            title="Servizi alle aziende"
+            id="navbarScrollingDropdown"
+            className="text-muted"
+            style={{ paddingBlock: "0 px", fontSize: "13px" }}
+          >
             <NavDropdown.Item href="#action3" className="fw-bold">
               Impara con Linkedin
               <p className="fw-normal">Corsi per formare i tuoi dipendenti</p>
@@ -68,16 +93,18 @@ const SmallFooter = () => {
           </NavDropdown>
         </Col>
       </Row>
-      <Row className="my-1">
+      <Row className="my-1 align-items-center">
         <Col>
           {" "}
-          <span className="m-0" style={{ whiteSpace: "nowrap" }}>
+          <span className="m-0 text-muted" style={{ fontSize: "13px", whiteSpace: "nowrap" }}>
             Scarica l’app LinkedIn
           </span>
         </Col>
         <Col>
           {" "}
-          <p className="m-0">Altro</p>
+          <p className="m-0 text-muted" style={{ fontSize: "13px" }}>
+            Altro
+          </p>
         </Col>
       </Row>
       <div className="d-flex">
