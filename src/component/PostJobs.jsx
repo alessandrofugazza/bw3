@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Container, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setJobs } from "../redux/action";
 
@@ -11,8 +11,10 @@ const PostJobs = () => {
   const dispatch = useDispatch();
   const allJobs = useSelector((state) => state.jobs.content);
   const allFavJobs = useSelector((state) => state.favouriteJobs.content);
+  const [isLoad, setIsLoad] = useState(false);
 
   const fetchAllJobs = async () => {
+    setIsLoad(true);
     const resp = await fetch("https://strive-benchmark.herokuapp.com/api/jobs", {
       headers: {
         Authorization:
@@ -21,6 +23,7 @@ const PostJobs = () => {
     });
     const data = await resp.json();
     dispatch(setJobs(data));
+    setIsLoad(false);
   };
 
   const fetchQueryJobs = async () => {
@@ -42,13 +45,24 @@ const PostJobs = () => {
     <Container className="mt-4">
       <Row className="border rounded bg-white gy-3">
         <h4>Offerte salvate:</h4>
-        {allFavJobs && allFavJobs.map((job) => <SingleJob key={job._id} job={job} />)}
+        {allFavJobs.length > 0 ? (
+          allFavJobs.map((job) => <SingleJob key={job._id} job={job} />)
+        ) : (
+          <span className="text-info m-2">puoi salvare le offerte di lavoro che ti interessano</span>
+        )}
       </Row>
       <Row className="border rounded bg-white gy-3 mt-3">
-        {allJobs &&
+        <h4>Offerte di Lavoro:</h4>
+        {isLoad ? (
+          <Spinner className="m-5" variant="success" animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          allJobs &&
           allJobs.data.map((job) => {
             return allFavJobs.find((fav) => fav._id === job._id) ? "" : <SingleJob key={job._id} job={job} />;
-          })}
+          })
+        )}
       </Row>
     </Container>
   );

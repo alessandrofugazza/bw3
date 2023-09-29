@@ -8,6 +8,7 @@ export const DEL_JOBS = "DEL_JOBS";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const DEL_FRIEND = "DEL_FRIEND";
 export const SET_IMG = "SET_IMG";
+export const SET_LOAD = "SET_LOAD";
 
 export const setProfile = (data) => ({ type: SET_PROFILE, payload: data });
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
@@ -18,9 +19,11 @@ export const delJobs = (data) => ({ type: DEL_JOBS, payload: data });
 export const addFriend = (data) => ({ type: ADD_FRIEND, payload: data });
 export const delFriend = (data) => ({ type: DEL_FRIEND, payload: data });
 export const setImg = (data) => ({ type: SET_IMG, payload: data });
+export const setLoad = (data) => ({ type: SET_LOAD, payload: data });
 
 export const fetchAllPost = () => {
   return async (dispatch, getState) => {
+    dispatch(setLoad(true));
     try {
       const resp = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
         headers: {
@@ -31,6 +34,7 @@ export const fetchAllPost = () => {
       const data = await resp.json();
 
       dispatch({ type: SET_POST, payload: data.reverse() });
+      dispatch(setLoad(false));
     } catch (error) {
       console.log(error);
     }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { fetchAllPost, fetchMeProfile } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import SinglePost from "./SinglePost";
@@ -13,6 +13,7 @@ const PostHome = () => {
   const allPost = useSelector((state) => state.post.content);
   const allFriends = useSelector((state) => state.friends.content);
   const myProfile = useSelector((state) => state.profile.content);
+  const isLoad = useSelector((state) => state.post.load);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
 
@@ -65,24 +66,37 @@ const PostHome = () => {
           </Button>
         </Col>
       </Row>
-      {allFriends.length > 0 && (
-        <Row className="bg-white border rounded mb-4">
-          <h5 className="mt-3">Post dei tuoi Amici:</h5>
-          {allPost
+
+      <Row className="bg-white border rounded mb-4">
+        <h5 className="mt-3">Post dei tuoi Amici:</h5>
+        {isLoad ? (
+          <Spinner className="m-5" variant="success" animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : allFriends.length > 0 ? (
+          allPost
             .filter((post) => allFriends.map((friend) => friend._id).includes(post.user._id))
-            .map((post) => (
-              <SinglePost key={`id-${post._id}`} post={post} />
-            ))}
-        </Row>
-      )}
+            .map((post) => <SinglePost key={`id-${post._id}`} post={post} />)
+        ) : (
+          <span className="text-info m-2">Aggiungi amici per visualizzare i loro post</span>
+        )}
+      </Row>
 
       <Row className="bg-white border rounded mb-4">
         <h5 className="mt-3">Altri Post:</h5>
-        {allPost.map((post, index) => {
-          if (index < 20) {
-            return <SinglePost key={`id-${post._id}`} post={post} />;
-          }
-        })}
+        {isLoad ? (
+          <Spinner className="m-5" variant="success" animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        ) : (
+          allPost
+            .filter((post) => !allFriends.map((friend) => friend._id).includes(post.user._id))
+            .map((post, index) => {
+              if (index < 20) {
+                return <SinglePost key={`id-${post._id}`} post={post} />;
+              }
+            })
+        )}
       </Row>
       <ModalPost show={show} setShow={setShow} />
     </Container>

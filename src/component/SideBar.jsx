@@ -27,6 +27,7 @@ const SideBar = () => {
   };
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -66,6 +67,7 @@ const SideBar = () => {
           </div>
 
           {sidebarFetchStudent &&
+            // eslint-disable-next-line array-callback-return
             sidebarFetchStudent.map((el, i) => {
               if (i < 10) {
                 return (
