@@ -60,7 +60,7 @@ const TopBar = () => {
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/home">
               <HouseDoorFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Home</span>
               {location.pathname === "/home" ? (
-                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+                <div className="bg-black border-transition" style={{ width: "100%", height: "3px" }}></div>
               ) : (
                 <div style={{ width: "100%", height: "3px" }}></div>
               )}
@@ -68,7 +68,7 @@ const TopBar = () => {
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/rete">
               <PeopleFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Rete</span>
               {location.pathname === "/rete" ? (
-                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+                <div className="bg-black border-transition" style={{ width: "100%", height: "3px" }}></div>
               ) : (
                 <div style={{ width: "100%", height: "3px" }}></div>
               )}
@@ -76,7 +76,7 @@ const TopBar = () => {
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/lavoro">
               <BriefcaseFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Lavoro</span>
               {location.pathname === "/lavoro" ? (
-                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+                <div className="bg-black border-transition" style={{ width: "100%", height: "3px" }}></div>
               ) : (
                 <div style={{ width: "100%", height: "3px" }}></div>
               )}
@@ -84,7 +84,7 @@ const TopBar = () => {
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/messaggi">
               <ChatDotsFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Messaggistica</span>
               {location.pathname === "/messaggi" ? (
-                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+                <div className="bg-black border-transition" style={{ width: "100%", height: "3px" }}></div>
               ) : (
                 <div style={{ width: "100%", height: "3px" }}></div>
               )}
@@ -92,7 +92,7 @@ const TopBar = () => {
             <Link className="d-flex flex-column justify-content-center align-items-center nav-link" to="/notifiche">
               <BellFill className="fs-4 mx-3" /> <span style={{ fontSize: "12px" }}>Notifiche</span>
               {location.pathname === "/notifiche" ? (
-                <div className="bg-black" style={{ width: "100%", height: "3px" }}></div>
+                <div className="bg-black border-transition" style={{ width: "100%", height: "3px" }}></div>
               ) : (
                 <div style={{ width: "100%", height: "3px" }}></div>
               )}

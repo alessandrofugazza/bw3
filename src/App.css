@@ -3,11 +3,11 @@
 }
 
 body {
-  background-color: #F4F2EE;
+  background-color: #f4f2ee;
 }
 
 #navbarScroll {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 #footerList {
@@ -19,7 +19,7 @@ body {
 }
 
 #dropLang {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid black;
   border-radius: 3px;
   color: gray;
@@ -50,8 +50,10 @@ body {
 }
 
 #imgProfileLeft {
-
   height: 70px;
   width: 70px;
   border-radius: 100%;
+}
+.border-transition {
+  transition: all 2s;
 }
