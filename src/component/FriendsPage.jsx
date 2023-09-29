@@ -47,7 +47,7 @@ const FriendsPage = () => {
           </ListGroup>
         </Col>
         <Col xs={12}>
-          <h3 className="mt-3">Collegatti a nuove persone:</h3>
+          <h3 className="mt-3">Collegati a nuove persone:</h3>
           <UsersList />
         </Col>
       </Row>
